@@ -95,3 +95,5 @@ function removeItem(e) {
 function toggleButton(ref, btnID) {
 	document.getElementById(btnID).disabled = false;
 }
+
+// finish stuff
