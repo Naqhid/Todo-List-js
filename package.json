@@ -1,0 +1,26 @@
+{
+  "name": "top_todo",
+  "version": "1.0.0",
+  "description": "Small app for todos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tanlaan/top_todo.git"
+  },
+  "author": "Chris Bolas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tanlaan/top_todo/issues"
+  },
+  "homepage": "https://github.com/tanlaan/top_todo#readme",
+  "devDependencies": {
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "webpack": "^5.3.2",
+    "webpack-cli": "^4.1.0"
+  }
+}
