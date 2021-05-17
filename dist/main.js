@@ -431,7 +431,7 @@ function getAddTaskForm(project, task) {
   if (task) dueDate.value = task.dueDate;
   taskForm.appendChild(dueDate);
 
-  // task
+  // task.
   const taskLabel = document.createElement('label');
   taskLabel.textContent = 'Task:';
   taskLabel.setAttribute('for', 'task');
