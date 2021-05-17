@@ -3,7 +3,7 @@ export default class Task {
     this.title = title;
     this.priority = priority;
     this.dueDate = dueDate;
-    this.task = task;.
+    this.task = task;
     this.note = note;
     this.tags = tags;
     this.complete = false;
