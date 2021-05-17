@@ -60,10 +60,10 @@ class project_Project {
 
 
 let db = firebase.firestore()
-const docRef = db.collection('projects').doc('chris')
+const docRef = db.collection('projects').doc('Naqhid')
 
 function saveState() {
-  // localStorage.setItem('projects', JSON.stringify(window.projects));
+  // localStorage.setItem('projects', JSON.stringify(window.projects.));
   docRef
     .withConverter(projectConverter)
     .set(window.projects)
@@ -144,7 +144,7 @@ function removeChildren(element) {
 function renderHeader(element) {
   const header = document.createElement('header');
   const title = document.createElement('h1');
-  title.textContent = 'Chris\' Todo';
+  title.textContent = 'Naqhid\' Todo';
   header.appendChild(title);
   element.appendChild(header);
 }
