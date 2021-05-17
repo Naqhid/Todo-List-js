@@ -5,10 +5,7 @@ import { getState } from './state';
 //
 window.projects = [];
 
-// Check local storage for prior usage
-// if (localStorage.getItem('projects')) {
-//   window.projects = expandState(localStorage.getItem('projects'));
-// } 
+
 
 const root = document.querySelector('main');
 
