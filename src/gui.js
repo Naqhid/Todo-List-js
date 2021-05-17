@@ -11,7 +11,7 @@ function removeChildren(element) {
 export function renderHeader(element) {
   const header = document.createElement('header');
   const title = document.createElement('h1');
-  title.textContent = 'Chris\' Todo';
+  title.textContent = 'Naqhid\' Todo';
   header.appendChild(title);
   element.appendChild(header);
 }
@@ -42,13 +42,6 @@ export function renderTabs(element) {
     item.textContent = project.name;
     item.addEventListener('click', function tabListener(event){
       
-      // Maybe I should add remove selectedProject and make this
-      // click action cause the id to change on the tabs? They 
-      // don't really need to be reloaded at all, just the id or
-      // class changed for them.
-      //
-      // If I render the page, then search for the li with text
-      // content of the project.name then set the attribute id to
       // selected, I can get rid of the selectedProject pass
       renderPage(element, project);
       selectProjectTab(project.name);
