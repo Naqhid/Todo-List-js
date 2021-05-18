@@ -63,7 +63,7 @@ let db = firebase.firestore()
 const docRef = db.collection('projects').doc('Naqhid')
 
 function saveState() {
-  // localStorage.setItem('projects', JSON.stringify(window.projects));
+  // localStorage.setItem('projects', JSON.stringify(window.projects.));
   docRef
     .withConverter(projectConverter)
     .set(window.projects)
@@ -175,6 +175,14 @@ function renderTabs(element) {
     item.textContent = project.name;
     item.addEventListener('click', function tabListener(event){
       
+      // Maybe I should add remove selectedProject and make this
+      // click action cause the id to change on the tabs? They 
+      // don't really need to be reloaded at all, just the id or
+      // class changed for them.
+      //
+      // If I render the page, then search for the li with text
+      // content of the project.name then set the attribute id to
+      // selected, I can get rid of the selectedProject pass
       renderPage(element, project);
       selectProjectTab(project.name);
       item.removeEventListener('click', tabListener);
@@ -423,7 +431,7 @@ function getAddTaskForm(project, task) {
   if (task) dueDate.value = task.dueDate;
   taskForm.appendChild(dueDate);
 
-  // task
+  // task.
   const taskLabel = document.createElement('label');
   taskLabel.textContent = 'Task:';
   taskLabel.setAttribute('for', 'task');
