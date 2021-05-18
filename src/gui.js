@@ -324,7 +324,7 @@ function getAddTaskForm(project, task) {
   tags.setAttribute('name', 'tags');
   if (task) tags.value = task.tags;
   taskForm.appendChild(tags);
-  // complete
+  // complete.
   const completeLabel = document.createElement('label');
   completeLabel.textContent = 'Complete:';
   completeLabel.setAttribute('for', 'complete');
