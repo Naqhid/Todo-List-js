@@ -14,4 +14,4 @@ getState().then(() => {
 })
 .catch((error) => {
   console.log('Something went wrong rendering the page:', error)
-});
+});.
