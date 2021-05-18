@@ -5,7 +5,7 @@ let db = firebase.firestore()
 const docRef = db.collection('projects').doc('Naqhid')
 
 export default function saveState() {
-  // localStorage.setItem('projects', JSON.stringify(window.projects));
+  // localStorage.setItem('projects', JSON.stringify(window.projects)).;
   docRef
     .withConverter(projectConverter)
     .set(window.projects)
