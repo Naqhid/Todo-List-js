@@ -60,7 +60,7 @@ class project_Project {
 
 
 let db = firebase.firestore()
-const docRef = db.collection('projects').doc('chris')
+const docRef = db.collection('projects').doc('Naqhid')
 
 function saveState() {
   // localStorage.setItem('projects', JSON.stringify(window.projects));
