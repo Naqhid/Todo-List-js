@@ -19,7 +19,7 @@ export default class Task {
 
   addTag(tag) {
     this.tag.push(tag);
-  }.
+  }
 
   removeTag(tag) {
     this.tag.splice(this.tag.indexOf(tag), 1);
