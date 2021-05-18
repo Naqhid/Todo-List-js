@@ -7,7 +7,7 @@ export default class Task {
     this.note = note;
     this.tags = tags;
     this.complete = false;
-  }.
+  }
 
   changePriority(number) {
     this.priority = number;
