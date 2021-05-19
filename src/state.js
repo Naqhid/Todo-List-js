@@ -31,10 +31,7 @@ async function getState() {
 var projectConverter = {
   toFirestore: function(projects) {
     return { projects: JSON.parse(JSON.stringify(projects)) }
-  },
-  fromFirestore: function(snapshot, options){
-    let data = snapshot.data(options)
-    console.log(data)
+  
     return data["projects"].map(project => {
 
       
