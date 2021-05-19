@@ -36,9 +36,7 @@ export function renderTabs(element) {
   const list = document.createElement('ul');
   for (const project of window.projects) {
     const item = document.createElement('li');
-      //  if(selectedProject == project.name) {
-      //    item.setAttribute('id', 'selected-tab');
-      //  }
+      
     item.textContent = project.name;
     item.addEventListener('click', function tabListener(event){
       
