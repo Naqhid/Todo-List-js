@@ -12,6 +12,4 @@ const root = document.querySelector('main');
 getState().then(() => {
   renderPage(root, window.projects[0], window.projects);
 })
-.catch((error) => {
-  console.log('Something went wrong rendering the page:', error)
-});
+
