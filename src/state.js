@@ -9,12 +9,7 @@ export default function saveState() {
   docRef
     .withConverter(projectConverter)
     .set(window.projects)
-  .then(() => {
-    console.log('saved.')
-  })
-  .catch((error) => {
-    console.log('error saving:', error)
-  })
+  
 }
 
 async function getState() {
@@ -29,9 +24,7 @@ async function getState() {
         window.projects = []
       }
     })
-    .catch((error) => {
-      console.log('error getting document:', error)
-    })
+    
   return;
 }
 

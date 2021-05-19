@@ -2,6 +2,10 @@
 
 A todo app for The Odin Project's javascript exercise
 
+## Desktop
+
+![Screenshot](ss-todo.png)
+
 ## Built With
 
 - HTML

@@ -1,7 +1,7 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 
-// CONCATENATED MODULE: ./src/task.js
+
 class task_Task {
   constructor(title, priority = 0, dueDate, task, note, tags) {
     this.title = title;
@@ -30,7 +30,7 @@ class task_Task {
   }
 }
 
-// CONCATENATED MODULE: ./src/project.js
+
 class project_Project {
   constructor(name) {
     this.name = name;
@@ -46,7 +46,7 @@ class project_Project {
   }
 
   remove(taskTitle) {
-    // Should this be a  map or reduce?
+   
     for (let i = 0; i < this.storage.length; i += 1) {
       if (this.storage[i].title === taskTitle) {
         this.storage.splice(i, 1);
@@ -55,15 +55,13 @@ class project_Project {
   }
 }
 
-// CONCATENATED MODULE: ./src/state.js
-
 
 
 let db = firebase.firestore()
 const docRef = db.collection('projects').doc('Naqhid')
 
 function saveState() {
-  // localStorage.setItem('projects', JSON.stringify(window.projects));
+  
   docRef
     .withConverter(projectConverter)
     .set(window.projects)
@@ -83,7 +81,7 @@ async function getState() {
         let data = doc.data()
         window.projects = data
       } else {
-        // Project didn't exist
+       
         window.projects = []
       }
     })
@@ -102,13 +100,13 @@ var projectConverter = {
     console.log(data)
     return data["projects"].map(project => {
 
-      // Don't modify the project object itself
+     
       let expandedTabs = project
       
-      // Turn project's tasks into Task objects
+      
       expandedTabs.storage = expandedTabs.storage.map(task => Object.assign(new task_Task, task))
 
-      // Turn project into Project object and return
+      
       return Object.assign(new project_Project(), expandedTabs)
     });
   }
@@ -117,20 +115,20 @@ var projectConverter = {
 function expandState(jsonState) {
    return JSON.parse(jsonState).map(project => {
 
-    // Don't modify the project object itself
+    
     let expandedTabs = project
     
-    // Turn project's tasks into Task objects
+    
     expandedTabs.storage = expandedTabs.storage.map(task => Object.assign(new Task, task))
 
-    // Turn project into Project object and return
+   
     return Object.assign(new Project(), expandedTabs)
   });
 }
 
 
 
-// CONCATENATED MODULE: ./src/gui.js
+
 
 
 
@@ -169,20 +167,10 @@ function renderTabs(element) {
   const list = document.createElement('ul');
   for (const project of window.projects) {
     const item = document.createElement('li');
-      //  if(selectedProject == project.name) {
-      //    item.setAttribute('id', 'selected-tab');
-      //  }
+      
     item.textContent = project.name;
     item.addEventListener('click', function tabListener(event){
       
-      // Maybe I should add remove selectedProject and make this
-      // click action cause the id to change on the tabs? They 
-      // don't really need to be reloaded at all, just the id or
-      // class changed for them.
-      //
-      // If I render the page, then search for the li with text
-      // content of the project.name then set the attribute id to
-      // selected, I can get rid of the selectedProject pass
       renderPage(element, project);
       selectProjectTab(project.name);
       item.removeEventListener('click', tabListener);
