@@ -42,7 +42,7 @@ export function renderTabs(element) {
     item.textContent = project.name;
     item.addEventListener('click', function tabListener(event){
       
-      // selected, I can get rid of the selectedProject pass
+      
       renderPage(element, project);
       selectProjectTab(project.name);
       item.removeEventListener('click', tabListener);
@@ -279,7 +279,7 @@ function getAddTaskForm(project, task) {
   if (task) priority.value = task.priority;
   taskForm.appendChild(priority);
 
-  // dueDate
+  // dueDate.
   const dueDateLabel = document.createElement('label');
   dueDateLabel.textContent = 'Due Date:';
   dueDateLabel.setAttribute('for', 'dueDate');
@@ -324,7 +324,7 @@ function getAddTaskForm(project, task) {
   tags.setAttribute('name', 'tags');
   if (task) tags.value = task.tags;
   taskForm.appendChild(tags);
-  // complete
+  // complete.
   const completeLabel = document.createElement('label');
   completeLabel.textContent = 'Complete:';
   completeLabel.setAttribute('for', 'complete');
