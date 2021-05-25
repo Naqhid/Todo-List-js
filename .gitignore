@@ -1,6 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 node_modules
 =======
+=======
+>>>>>>> 4286a16971c16fb67ae2460700dfdc818b06e88f
 # Logs
 logs
 *.log
@@ -104,4 +107,7 @@ typings/
 
 # TernJS port file
 .tern-port
+<<<<<<< HEAD
 >>>>>>> 63ab3e748cade4a6b859624502542382a727622b
+=======
+>>>>>>> 4286a16971c16fb67ae2460700dfdc818b06e88f
