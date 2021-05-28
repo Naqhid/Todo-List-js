@@ -1,63 +1,51 @@
-import Project from './project'
-import Task from './task'
+import Project from './project';
+import Task from './task';
 
-let db = firebase.firestore()
-const docRef = db.collection('projects').doc('Naqhid')
+const db = firebase.firestore();
+const docRef = db.collection('projects').doc('Naqhid');
 
 export default function saveState() {
- 
   docRef
     .withConverter(projectConverter)
-    .set(window.projects)
-  
+    .set(window.projects);
 }
 
 async function getState() {
   await docRef
     .withConverter(projectConverter)
     .get().then((doc) => {
-      if(doc.exists){
-        let data = doc.data()
-        window.projects = data
+      if (doc.exists) {
+        const data = doc.data();
+        window.projects = data;
       } else {
         // Project didn't exist
-        window.projects = []
+        window.projects = [];
       }
-    })
-    
-  return;
+    });
 }
 
 var projectConverter = {
-  toFirestore: function(projects) {
-    return { projects: JSON.parse(JSON.stringify(projects)) }
-  
-    return data["projects"].map(project => {
+  toFirestore(projects) {
+    return { projects: JSON.parse(JSON.stringify(projects)) };
 
-      
-      let expandedTabs = project
-      
-      
-      expandedTabs.storage = expandedTabs.storage.map(task => Object.assign(new Task, task))
+    return data.projects.map((project) => {
+      const expandedTabs = project;
 
-     
-      return Object.assign(new Project(), expandedTabs)
+      expandedTabs.storage = expandedTabs.storage.map((task) => Object.assign(new Task(), task));
+
+      return Object.assign(new Project(), expandedTabs);
     });
-  }
-}
+  },
+};
 
 function expandState(jsonState) {
-   return JSON.parse(jsonState).map(project => {
+  return JSON.parse(jsonState).map((project) => {
+    const expandedTabs = project;
 
-    
-    let expandedTabs = project
-    
-  
-    expandedTabs.storage = expandedTabs.storage.map(task => Object.assign(new Task, task))
+    expandedTabs.storage = expandedTabs.storage.map((task) => Object.assign(new Task(), task));
 
-    
-    return Object.assign(new Project(), expandedTabs)
+    return Object.assign(new Project(), expandedTabs);
   });
 }
 
-export {saveState, getState};
+export { saveState, getState };
