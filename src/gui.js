@@ -23,7 +23,7 @@ function getAddTaskButton(element, project) {
   add.addEventListener('click', (event) => {
     event.stopPropagation();
     const formCheck = document.getElementById('new-task');
-    if (typeof (formCheck) === 'undeclared' || formCheck == null) {
+    if (typeof (formCheck) === 'undeclared' || formCheck === null) {
       element.appendChild(getAddTaskForm(project));
     }
   });
@@ -65,7 +65,7 @@ function selectProjectTab(name) {
 
   // Correctly set selected tab
   for (let i = 0; i < tabs.length; i++) {
-    if (tabs[i].textContent == name) {
+    if (tabs[i].textContent === name) {
       tabs[i].setAttribute('id', 'selected-tab');
     }
   }

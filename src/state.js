@@ -1,7 +1,6 @@
 import Project from './project';
 import Task from './task';
 
-const db = firebase.firestore();
 const docRef = db.collection('projects').doc('Naqhid');
 
 export default function saveState() {
@@ -38,14 +37,10 @@ var projectConverter = {
   },
 };
 
-function expandState(jsonState) {
-  return JSON.parse(jsonState).map((project) => {
-    const expandedTabs = project;
-
     expandedTabs.storage = expandedTabs.storage.map((task) => Object.assign(new Task(), task));
 
     return Object.assign(new Project(), expandedTabs);
-  });
-}
+  
+};
 
 export { saveState, getState };
