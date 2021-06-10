@@ -11,7 +11,7 @@ function removeChildren(element) {
 export function renderHeader(element) {
   const header = document.createElement('header');
   const title = document.createElement('h1');
-  title.textContent = 'Naqhid\' Todo';
+  title.textContent = 'Chris\' Todo';
   header.appendChild(title);
   element.appendChild(header);
 }
@@ -36,11 +36,20 @@ export function renderTabs(element) {
   const list = document.createElement('ul');
   for (const project of window.projects) {
     const item = document.createElement('li');
-      
+      //  if(selectedProject == project.name) {
+      //    item.setAttribute('id', 'selected-tab');
+      //  }
     item.textContent = project.name;
     item.addEventListener('click', function tabListener(event){
       
-      
+      // Maybe I should add remove selectedProject and make this
+      // click action cause the id to change on the tabs? They 
+      // don't really need to be reloaded at all, just the id or
+      // class changed for them.
+      //
+      // If I render the page, then search for the li with text
+      // content of the project.name then set the attribute id to
+      // selected, I can get rid of the selectedProject pass
       renderPage(element, project);
       selectProjectTab(project.name);
       item.removeEventListener('click', tabListener);
@@ -277,7 +286,7 @@ function getAddTaskForm(project, task) {
   if (task) priority.value = task.priority;
   taskForm.appendChild(priority);
 
-  // dueDate.
+  // dueDate
   const dueDateLabel = document.createElement('label');
   dueDateLabel.textContent = 'Due Date:';
   dueDateLabel.setAttribute('for', 'dueDate');
@@ -322,7 +331,7 @@ function getAddTaskForm(project, task) {
   tags.setAttribute('name', 'tags');
   if (task) tags.value = task.tags;
   taskForm.appendChild(tags);
-  // complete.
+  // complete
   const completeLabel = document.createElement('label');
   completeLabel.textContent = 'Complete:';
   completeLabel.setAttribute('for', 'complete');
