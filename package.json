@@ -17,20 +17,10 @@
   },
   "homepage": "https://github.com/tanlaan/top_todo#readme",
   "devDependencies": {
-<<<<<<< HEAD
-    "eslint": "^7.2.0",
-    "eslint-config-airbnb-base": "14.2.1",
-    "eslint-plugin-import": "^2.22.1",
-=======
-    "babel-eslint": "^10.1.0",
-    "eslint": "^7.27.0",
+    "eslint": "^7.13.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.23.3",
->>>>>>> ef8dd777e7962e9e91142ffa5e86419b349dc003
+    "eslint-plugin-import": "^2.22.1",
     "webpack": "^5.3.2",
     "webpack-cli": "^4.1.0"
-  },
-  "dependencies": {
-    "babel-runtime": "^6.26.0"
   }
 }
