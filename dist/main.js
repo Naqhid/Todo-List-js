@@ -144,7 +144,7 @@ function removeChildren(element) {
 function renderHeader(element) {
   const header = document.createElement('header');
   const title = document.createElement('h1');
-  title.textContent = 'Chris\' Todo';
+  title.textContent = 'Naqhid\ Todo';
   header.appendChild(title);
   element.appendChild(header);
 }

@@ -60,7 +60,7 @@ function removeItem(e) {
   // const items = document.getElementById('items');
 
   if (e.target.classList.contains('delete')) {
-    if (confirm('Are you Sure?')) {
+    if (window.confirm('Are you Sure?')) {
       const li = e.target.parentNode;
       items.removeChild(li);
       document.getElementById('lblsuccess').innerHTML = 'Text deleted successfully';
@@ -83,6 +83,7 @@ function removeItem(e) {
 
 window.onload = () => {
   const form1 = document.querySelector('#addForm');
+  const items = document.getElementById('items');
 
   form1.addEventListener('submit', addItem);
   items.addEventListener('click', removeItem);

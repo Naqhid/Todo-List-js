@@ -1,6 +1,11 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-use-before-define */
+/* eslint-disable valid-typeof */
 import Task from './task';
 import Project from './project';
-import {saveState} from './state';
+import { saveState } from './state';
 
 function removeChildren(element) {
   while (element.firstChild) {
@@ -11,7 +16,7 @@ function removeChildren(element) {
 export function renderHeader(element) {
   const header = document.createElement('header');
   const title = document.createElement('h1');
-  title.textContent = 'Chris\' Todo';
+  title.textContent = 'Naqhid\' Todo';
   header.appendChild(title);
   element.appendChild(header);
 }
@@ -20,10 +25,10 @@ function getAddTaskButton(element, project) {
   const add = document.createElement('button');
   add.classList.add('add-task');
   add.innerHTML = '&#43;';
-  add.addEventListener('click', function editListener(event) {
+  add.addEventListener('click', (event) => {
     event.stopPropagation();
     const formCheck = document.getElementById('new-task');
-    if(typeof(formCheck) == 'undeclared' || formCheck == null) {
+    if (typeof (formCheck) === 'undeclared' || formCheck === null) {
       element.appendChild(getAddTaskForm(project));
     }
   });
@@ -36,20 +41,9 @@ export function renderTabs(element) {
   const list = document.createElement('ul');
   for (const project of window.projects) {
     const item = document.createElement('li');
-      //  if(selectedProject == project.name) {
-      //    item.setAttribute('id', 'selected-tab');
-      //  }
+
     item.textContent = project.name;
-    item.addEventListener('click', function tabListener(event){
-      
-      // Maybe I should add remove selectedProject and make this
-      // click action cause the id to change on the tabs? They 
-      // don't really need to be reloaded at all, just the id or
-      // class changed for them.
-      //
-      // If I render the page, then search for the li with text
-      // content of the project.name then set the attribute id to
-      // selected, I can get rid of the selectedProject pass
+    item.addEventListener('click', function tabListener(event) {
       renderPage(element, project);
       selectProjectTab(project.name);
       item.removeEventListener('click', tabListener);
@@ -58,9 +52,9 @@ export function renderTabs(element) {
   }
 
   // Default tab selection
-  if (list.children[0]){
+  if (list.children[0]) {
     list.children[0].setAttribute('id', 'selected-tab');
-  };
+  }
 
   tabs.append(list);
   tabs.appendChild(getAddProjectButton());
@@ -68,19 +62,18 @@ export function renderTabs(element) {
 }
 
 function selectProjectTab(name) {
-    // Select li elements of tabs
-    const tabs = document.getElementById('project-tabs').getElementsByTagName('ul')[0].children
+  // Select li elements of tabs
+  const tabs = document.getElementById('project-tabs').getElementsByTagName('ul')[0].children;
 
-    // Remove default selected tab
-    document.getElementById('selected-tab').removeAttribute('id')
+  // Remove default selected tab
+  document.getElementById('selected-tab').removeAttribute('id');
 
-    // Correctly set selected tab
-    for (let i = 0; i < tabs.length; i++ ) {
-      if (tabs[i].textContent == name) {
-        tabs[i].setAttribute('id', 'selected-tab')
-      }
+  // Correctly set selected tab
+  for (let i = 0; i < tabs.length; i++) {
+    if (tabs[i].textContent === name) {
+      tabs[i].setAttribute('id', 'selected-tab');
     }
-
+  }
 }
 
 function makeClassContainer(name) {
@@ -135,7 +128,7 @@ export function renderFullTask(element, task, project) {
   const complete = document.createElement('input');
   complete.setAttribute('type', 'checkbox');
   complete.checked = task.complete;
-  complete.addEventListener('click', function completeListener(event) {
+  complete.addEventListener('click', (event) => {
     event.stopPropagation();
     task.toggleComplete();
   });
@@ -159,13 +152,12 @@ export function renderFullTask(element, task, project) {
 }
 
 export function renderProject(element, project) {
-  
   // We don't have any project to get tasks from!
-  if (!project) return
+  if (!project) return;
 
   const projectTasks = document.createElement('div');
   projectTasks.id = 'project-tasks';
-  
+
   for (const task of project.storage) {
     const container = makeTaskContainer();
     renderTask(container, task, project);
@@ -185,9 +177,9 @@ export function renderPage(element, project) {
 function getAddProjectButton() {
   const add = document.createElement('button');
   add.classList.add('add-project');
-  add.innerHTML = "&#43;";
+  add.innerHTML = '&#43;';
   add.setAttribute('type', 'button');
-  add.addEventListener('click', function editListener(event) {
+  add.addEventListener('click', (event) => {
     event.stopPropagation();
     event.currentTarget.parentNode.appendChild(getAddProjectForm(window.projects));
   });
@@ -199,7 +191,7 @@ function getEditButton(task, project) {
   edit.classList.add('edit-task');
   edit.innerHTML = '&#128221;';
   edit.setAttribute('type', 'button');
-  edit.addEventListener('click', function editListener(event) {
+  edit.addEventListener('click', (event) => {
     event.stopPropagation();
     const element = event.currentTarget.parentNode;
     element.parentNode.insertBefore(getAddTaskForm(project, task), element.nextSibling);
@@ -210,10 +202,10 @@ function getEditButton(task, project) {
 function getRemoveTaskButton(task, project) {
   const remove = document.createElement('button');
   remove.textContent = '🗑️';
-  remove.addEventListener('click', function removeListener(event) {
+  remove.addEventListener('click', (event) => {
     event.stopPropagation();
-    const message = "Are you sure you want to delete this task?";
-    if(confirm(message)) {
+    const message = 'Are you sure you want to delete this task?';
+    if (window.confirm(message)) {
       const parentDiv = event.currentTarget.parentNode;
       project.remove(task.title);
       saveState();
@@ -247,7 +239,7 @@ function getAddProjectForm() {
   const cancel = document.createElement('button');
   cancel.textContent = 'Cancel';
   cancel.setAttribute('type', 'button');
-  cancel.addEventListener('click', function cancelListener(event) {
+  cancel.addEventListener('click', (event) => {
     const form = document.getElementById('new-project');
     removeChildren(form);
     form.remove();
@@ -286,7 +278,7 @@ function getAddTaskForm(project, task) {
   if (task) priority.value = task.priority;
   taskForm.appendChild(priority);
 
-  // dueDate
+  // dueDate.
   const dueDateLabel = document.createElement('label');
   dueDateLabel.textContent = 'Due Date:';
   dueDateLabel.setAttribute('for', 'dueDate');
@@ -331,7 +323,7 @@ function getAddTaskForm(project, task) {
   tags.setAttribute('name', 'tags');
   if (task) tags.value = task.tags;
   taskForm.appendChild(tags);
-  // complete
+  // complete.
   const completeLabel = document.createElement('label');
   completeLabel.textContent = 'Complete:';
   completeLabel.setAttribute('for', 'complete');
@@ -357,7 +349,7 @@ function getAddTaskForm(project, task) {
   const cancel = document.createElement('button');
   cancel.textContent = 'Cancel';
   cancel.setAttribute('type', 'button');
-  cancel.addEventListener('click', function cancelListener(event) {
+  cancel.addEventListener('click', (event) => {
     const form = document.getElementById('new-task');
     removeChildren(form);
     form.remove();
@@ -377,7 +369,7 @@ function newProjectListener(event) {
   const root = document.querySelector('main');
   removeChildren(root);
   renderPage(root, newProject);
-  selectProjectTab(title)
+  selectProjectTab(title);
 }
 
 function newTaskListener(event, project, task) {
