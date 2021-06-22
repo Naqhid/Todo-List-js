@@ -2,7 +2,6 @@ import GoalsManager from '../models/goalsManager';
 
 const goalsManager = new GoalsManager();
 
-
 describe('GoalManager add method', () => {
   /* Create a goal */
 

@@ -46,7 +46,7 @@ class GoalsManager {
   }
 
   getByCategory(category) {
-    return this.goals.filter(element => element.category === category);
+    return this.goals.filter((element) => element.category === category);
   }
 }
 
